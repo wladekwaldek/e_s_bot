@@ -1,5 +1,3 @@
-const key = require("./constants");
-
 const TelegramApi = require("node-telegram-bot-api");
 
 const token = process.env.SAVE_MY_ENTRIES;
