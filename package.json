@@ -1,0 +1,22 @@
+{
+  "name": "telegram-bot-passmanager",
+  "version": "1.0.0",
+  "description": "generating passwords for app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "generating",
+    "passwords"
+  ],
+  "author": "vlad and oleg",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.63.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
