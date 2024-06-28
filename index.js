@@ -3,10 +3,14 @@ require("dotenv").config();
 
 const token = process.env.SAVE_MY_ENTRIES;
 
-const bot = new TelegramApi(token, { polling: true });
+if (token) {
+  const bot = new TelegramApi(token, { polling: true });
 
-bot.on("message", (msg) => {
-  console.log(msg);
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, "hi");
-});
+  bot.on("message", (msg) => {
+    console.log(msg);
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, "hi");
+  });
+} else {
+  console.log("error");
+}
