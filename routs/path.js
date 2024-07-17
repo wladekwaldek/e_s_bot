@@ -1,10 +1,27 @@
-const express = require('express')
+const express = require("express");
+const User = require("../models/User_model");
 
-const router = express.Router()
+const router = express.Router();
 
-router.post("/reg", (req, res) => {
+router.post("/backup", async (req, res) => {
+  try {
+    console.log(req.body);
+    res.json({ message: "backup." });
+  } catch (e) {
+    console.log(e.message);
+  }
+});
 
-     console.log(req.body)
-     res.json({message: "ok"})
-})
-module.exports = router
+router.post("/reg", async (req, res) => {
+  try {
+    const user = new User(req.body);
+
+    await user.save();
+    console.log("meow");
+    console.log(req.body);
+    res.json({ message: "Регистрация прошла успешно." });
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+module.exports = router;

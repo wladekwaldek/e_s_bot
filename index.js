@@ -1,4 +1,5 @@
 const TelegramApi = require("node-telegram-bot-api");
+const mongoose = require('mongoose');
 require("dotenv").config();
 const express = require("express");
 
@@ -6,7 +7,8 @@ const app = express();
 
 app.use(express.json({ extended: true }));
 
-const token = process.env.SAVE_MY_ENTRIES;
+const token = process.env.DEV;
+const PORT = process.env.PORT_DEV
 
 if (token) {
   const bot = new TelegramApi(token, { polling: true });
@@ -22,6 +24,21 @@ if (token) {
 
 app.use("/api", require("./routs/path"));
 
-  app.listen(5000, () => {
+async function runServer() {
+  try{
+    await require('./lib/mongoose');
+
+  app.listen(PORT, () => {
     console.log("Server ok")
   });
+  } catch(e){
+    console.log(e.message)
+  }
+  
+
+}
+
+runServer()
+
+
+  
